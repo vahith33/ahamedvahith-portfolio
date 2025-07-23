@@ -18,19 +18,19 @@ export default function Navigation() {
   const [activeSection, setActiveSection] = useState("home")
   const [isDarkMode, setIsDarkMode] = useState(false)
 
-  useEffect(() => {
-    // Check for saved theme preference or default to light mode
-    const savedTheme = localStorage.getItem("theme")
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+useEffect(() => {
+  const savedTheme = localStorage.getItem("theme")
 
-    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
-      setIsDarkMode(true)
-      document.documentElement.classList.add("dark")
-    } else {
-      setIsDarkMode(false)
-      document.documentElement.classList.remove("dark")
-    }
-  }, [])
+  if (savedTheme === "dark") {
+    setIsDarkMode(true)
+    document.documentElement.classList.add("dark")
+  } else {
+    setIsDarkMode(false)
+    document.documentElement.classList.remove("dark")
+    localStorage.setItem("theme", "light") // 👈 Force light as default
+  }
+}, [])
+
 
   useEffect(() => {
     const handleScroll = () => {

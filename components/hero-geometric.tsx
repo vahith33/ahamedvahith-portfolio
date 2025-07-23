@@ -177,7 +177,7 @@ export default function HeroGeometric({
         </svg>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 md:px-6 py-8 md:py-0">
+     <div className="relative z-10 container mx-auto px-8 md:px-20 py-8 md:py-0">
         <div className="grid lg:grid-cols-2 gap-8 items-center min-h-screen">
           {/* Left Content */}
           <div className="space-y-6">
