@@ -9,7 +9,7 @@ const education = [
     degree: "B.TECH ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING",
     institution: "SNS College of Technology",
     period: "2022 - 2026",
-    details: "CGPA-8.23 (Till 5th Semester)",
+    details: "CGPA-8 (Till 7th Semester)",
     current: true,
   },
   {
@@ -30,13 +30,16 @@ const education = [
 
 const internshipExperience = [
   {
-    title: "Front-End Web Design Intern",
-    company: "ZEVIC SOFTWARE SOLUTIONS",
-    period: "Apr 2025",
+    title: "Full Stack Developer Intern",
+    company: "Codework.ai",
+    period: "Feb 2026 - May 2026",
     description: [
-      "Created a website containing book details with update/delete functionalities.",
-      "Gained knowledge about JSX, React, Nextjs, Javascript.",
+      "Developed 'Bibble AI', an interactive RAG-based (Retrieval-Augmented Generation) platform to enhance user-data interactivity.",
+      "Engineered 'EduBot', an automated university tracking system for monitoring and managing student academic performance.",
+      "Advanced full-stack development using Next.js, FastAPI, PostgreSQL, and Redis for scalable product solutions.",
+      "Conducted extensive API testing and documentation using Postman to ensure system reliability.",
     ],
+    current: true,
   },
   {
     title: "Machine Learning Intern",
@@ -47,6 +50,7 @@ const internshipExperience = [
       "Gained hands-on knowledge about logistic regression and random forest algorithms.",
       "Implemented data preprocessing and feature engineering techniques.",
     ],
+    current: false,
   },
 ]
 
@@ -140,12 +144,12 @@ export default function Experience() {
                 />
 
                 {/* Content card */}
-                <div className={`flex ${index % 2 === 0 ? "justify-start" : "justify-end"}`}>
+                <div className={`flex items-center w-full ${index % 2 === 0 ? "justify-start" : "justify-end"}`}>
                   <motion.div
                     whileHover={{ scale: 1.02, y: -5 }}
-                    className={`w-full max-w-md bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 cursor-pointer ${
-                      index % 2 === 0 ? "mr-8" : "ml-8"
-                    } ${edu.current ? "ring-2 ring-blue-200 dark:ring-blue-600" : ""}`}
+                    className={`w-[48%] bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 cursor-pointer text-left ${
+                      edu.current ? "ring-2 ring-blue-200 dark:ring-blue-600" : ""
+                    }`}
                   >
                     <div className="mb-3 flex items-center gap-2">
                       <span
@@ -158,7 +162,7 @@ export default function Experience() {
                         {edu.period}
                       </span>
                       {edu.current && (
-                        <span className="bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-medium">
+                        <span className="bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-medium animate-pulse shadow-sm">
                           Current
                         </span>
                       )}
@@ -198,20 +202,31 @@ export default function Experience() {
             {internshipExperience.map((exp, index) => (
               <motion.div key={index} variants={itemVariants} className="relative mb-12 last:mb-0">
                 {/* Timeline dot */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 top-6 w-4 h-4 bg-blue-gray dark:bg-blue-500 rounded-full border-4 border-cream dark:border-gray-900 shadow-lg z-10 transition-colors duration-300" />
+                <div className={`absolute left-1/2 transform -translate-x-1/2 top-6 w-4 h-4 rounded-full border-4 border-cream dark:border-gray-900 shadow-lg z-10 transition-colors duration-300 ${
+                    exp.current ? "bg-blue-500" : "bg-blue-gray dark:bg-blue-500"
+                }`} />
 
                 {/* Content card */}
-                <div className={`flex ${index % 2 === 0 ? "justify-start" : "justify-end"}`}>
+                <div className={`flex items-center w-full ${index % 2 === 0 ? "justify-start" : "justify-end"}`}>
                   <motion.div
                     whileHover={{ scale: 1.02, y: -5 }}
-                    className={`w-full max-w-md bg-gradient-to-r from-white to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-600 hover:shadow-xl transition-all duration-300 cursor-pointer ${
-                      index % 2 === 0 ? "mr-8" : "ml-8"
+                    className={`w-[48%] bg-gradient-to-r from-white to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-600 hover:shadow-xl transition-all duration-300 cursor-pointer text-left ${
+                      exp.current ? "ring-2 ring-blue-200 dark:ring-blue-600" : ""
                     }`}
                   >
-                    <div className="mb-3">
-                      <span className="bg-blue-gray/10 dark:bg-blue-500/10 text-blue-gray dark:text-blue-400 px-3 py-1 rounded-full text-sm font-medium transition-colors duration-300">
+                    <div className="mb-3 flex items-center gap-2">
+                      <span className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-300 ${
+                         exp.current 
+                          ? "bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300"
+                          : "bg-blue-gray/10 dark:bg-blue-500/10 text-blue-gray dark:text-blue-400"
+                      }`}>
                         {exp.period}
                       </span>
+                      {exp.current && (
+                        <span className="bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-medium animate-pulse shadow-md">
+                          Current
+                        </span>
+                      )}
                     </div>
                     <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-1 transition-colors duration-300">
                       {exp.title}
