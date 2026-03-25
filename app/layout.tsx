@@ -6,33 +6,41 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Ahamed Vahith K | AI Product Developer & Full Stack Developer Portfolio",
+  metadataBase: new URL("https://ahamedvahith-portfolio.vercel.app"),
+  title: "Ahamed Vahith K | AI Product Developer & Full Stack Engineer Portfolio",
   description:
-    "Portfolio of Ahamed Vahith K - AI Product Developer and Full Stack Developer specializing in AI products, Full Stack applications, and innovative digital solutions.",
-  keywords: ["Ahamed Vahith K", "AI Product Developer", "Full Stack Developer", "AI Engineer", "Next.js", "Portfolio", "Computer Vision", "Deep Learning"],
+    "Explore the portfolio of Ahamed Vahith K, a specialized AI Product Developer and Full Stack Developer. Expert in Next.js, FastAPI, RAG AI, and building high-performance web applications.",
+  keywords: [
+    "Ahamed Vahith K", "AI Product Developer", "Full Stack Developer", "AI Engineer", 
+    "Python Developer", "React Developer", "Next.js Expert", "FastAPI specialist", 
+    "RAG AI Developer", "Portfolio", "Generative AI Portfolio", "Machine Learning Engineer"
+  ],
+  alternates: {
+    canonical: "/",
+  },
   authors: [{ name: "Ahamed Vahith K" }],
   creator: "Ahamed Vahith K",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://ahamedvahith-portfolio.vercel.app",
-    title: "Ahamed Vahith K | AI Product Developer & Full Stack Developer Portfolio",
-    description: "AI Product Developer and Full Stack Developer specializing in AI and innovative digital solutions.",
+    title: "Ahamed Vahith K | AI Product Developer & Full Stack Specialist",
+    description: "Building intelligent digital products that solve real-world problems through AI and modern web technologies.",
     siteName: "Ahamed Vahith Portfolio",
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Ahamed Vahith Portfolio",
+        alt: "Ahamed Vahith Portfolio Preview",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ahamed Vahith K | AI Product Developer & Full Stack Developer",
-    description: "AI Product Developer and Full Stack Developer portfolio.",
-    creator: "@your_twitter_handle",
+    title: "Ahamed Vahith K | AI Product Developer & Full Stack Engineer",
+    description: "Specialized in AI product development and full-stack engineering.",
+    creator: "@vahith33",
     images: ["/images/og-image.png"],
   },
   robots: {
@@ -69,8 +77,18 @@ export default function RootLayout({
               "@type": "Person",
               name: "Ahamed Vahith K",
               url: "https://ahamedvahith-portfolio.vercel.app",
-              jobTitle: "AI Product Developer & Full Stack Developer",
-              description: "AI Product Developer and Full Stack Developer specializing in AI and innovative digital solutions.",
+              jobTitle: "AI Product Developer & Full Stack Engineer",
+              description: "A specialist in building AI-powered digital products and high-performance full-stack web applications.",
+              image: "https://ahamedvahith-portfolio.vercel.app/images/portfolio_image.jpeg",
+              alumniOf: {
+                "@type": "CollegeOrUniversity",
+                name: "SNS College of Technology"
+              },
+              knowsAbout: [
+                "Artificial Intelligence", "Generative AI", "Full Stack Development", 
+                "Next.js", "FastAPI", "Python", "RAG (Retrieval-Augmented Generation)", 
+                "React", "MongoDB", "PostgreSQL"
+              ],
               sameAs: [
                 "https://github.com/vahith33",
                 "https://www.linkedin.com/in/vahith33",
