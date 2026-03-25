@@ -25,18 +25,12 @@ export default function Footer() {
   return (
     <footer className="bg-warm-beige-light dark:bg-gray-800 py-12 transition-colors duration-300">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="mb-6 md:mb-0">
-            <h3 className="text-xl font-bold bg-gradient-to-r from-dark-teal to-blue-gray dark:from-blue-400 dark:to-blue-300 bg-clip-text text-transparent mb-2">
-              Ahamed Vahith K
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">Machine Learning Engineer</p>
-          </motion.div>
-
+        <div className="flex flex-col items-center justify-center gap-8">
+          {/* Social Icons - Centered */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-6 mb-6 md:mb-0"
+            className="flex items-center gap-6"
           >
             {socialLinks.map((social) => {
               const Icon = social.icon
@@ -46,24 +40,29 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-cream dark:bg-gray-700 border border-warm-beige dark:border-gray-600 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-dark-teal dark:hover:text-blue-400 hover:bg-dark-teal/5 dark:hover:bg-blue-400/5 transition-all duration-200"
+                  className="w-12 h-12 bg-cream dark:bg-gray-700 border border-warm-beige dark:border-gray-600 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-dark-teal dark:hover:text-blue-400 hover:bg-dark-teal/5 dark:hover:bg-blue-400/5 transition-all duration-300 hover:scale-110 shadow-sm"
                   aria-label={social.label}
                 >
-                  <Icon size={18} />
+                  <Icon size={20} />
                 </a>
               )
             })}
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center">
-            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-2 transition-colors duration-300">
-              <Sun className="text-yellow-500 dark:text-yellow-400" size={16} />
-              <span className="text-sm">Have a great day!</span>
-            </div>
+          {/* Footer Info & Message - Centered */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            className="flex flex-col items-center gap-4 text-center"
+          >
             <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 transition-colors duration-300">
-              <span>Made with</span>
-              <Heart className="text-dark-teal dark:text-blue-400" size={16} />
-              <span>ahamedvahith@2025</span>
+
+              <span className="text-sm">Copyright © 2025 Ahamed Vahith. All rights reserved.</span>
+            </div>
+            
+            <div className="flex items-center gap-2 text-gray-800 dark:text-gray-200 font-serif transition-colors duration-300 pt-2">
+              <Sun className="text-yellow-500 dark:text-yellow-400" size={18} />
+              <span className="text-xl tracking-wide italic">Have a great day!</span>
             </div>
           </motion.div>
         </div>

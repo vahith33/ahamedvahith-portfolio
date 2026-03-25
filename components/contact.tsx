@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { Mail, Phone, Send } from "lucide-react"
 import { useState } from "react"
 import StarBackground from "@/components/star-background"
 
@@ -39,16 +39,11 @@ This message was sent from your portfolio contact form.`
       const body = encodeURIComponent(emailBody)
       const mailtoLink = `mailto:ahamedvahith33@gmail.com?subject=${subject}&body=${body}`
 
-      // Try to open email client
-      const link = document.createElement("a")
-      link.href = mailtoLink
-      link.target = "_blank"
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
+      // Use window.location.href for better compatibility with mailto
+      window.location.href = mailtoLink
 
       // Show success message
-      alert("Email client opened successfully! Please send the email to complete your message.")
+      alert("Your email client should open now. Please hit 'Send' to finish!")
 
       // Reset form
       setFormData({ name: "", email: "", message: "" })
@@ -117,9 +112,7 @@ This message was sent from your portfolio contact form.`
     }
   }
 
-  const handleLocationClick = () => {
-    window.open("https://www.google.com/maps/search/Saravanampatti,+Coimbatore,+Tamil+Nadu,+India", "_blank")
-  }
+  // Removed location handler
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 60 },
@@ -190,46 +183,7 @@ This message was sent from your portfolio contact form.`
                   </div>
                 </motion.div>
 
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  onClick={handleLocationClick}
-                  className="flex items-center gap-4 cursor-pointer hover:bg-dark-teal/5 dark:hover:bg-blue-400/5 p-4 rounded-lg transition-colors"
-                >
-                  <div className="w-12 h-12 bg-dark-teal/10 dark:bg-blue-400/10 border border-dark-teal/20 dark:border-blue-400/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MapPin className="text-dark-teal dark:text-blue-400" size={20} />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">Location</p>
-                    <p className="text-gray-800 dark:text-gray-200 font-medium">Saravanampatti, Coimbatore</p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">Tamil Nadu, India</p>
-                  </div>
-                </motion.div>
               </div>
-
-              {/* Enhanced Map for Saravanampatti */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.02 }}
-                onClick={handleLocationClick}
-                className="mt-8 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg h-48 flex items-center justify-center border border-blue-200 dark:border-blue-700 relative overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300"
-              >
-                {/* Background pattern */}
-                <div className="absolute inset-0 opacity-10">
-                  <div className="absolute top-4 left-4 w-2 h-2 bg-blue-400 rounded-full"></div>
-                  <div className="absolute top-8 right-8 w-1 h-1 bg-blue-300 rounded-full"></div>
-                  <div className="absolute bottom-6 left-8 w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
-                  <div className="absolute bottom-4 right-4 w-2 h-2 bg-blue-400 rounded-full"></div>
-                </div>
-
-                <div className="text-center z-10">
-                  <MapPin className="text-dark-teal dark:text-blue-400 mx-auto mb-3" size={36} />
-                  <p className="text-gray-800 dark:text-gray-200 font-semibold text-lg">Saravanampatti</p>
-                  <p className="text-gray-600 dark:text-gray-400 font-medium">Coimbatore, Tamil Nadu</p>
-                  <p className="text-gray-500 dark:text-gray-500 text-sm mt-1">India</p>
-                  <p className="text-blue-600 dark:text-blue-400 text-xs mt-2">Click to view on map</p>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
 

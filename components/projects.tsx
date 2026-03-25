@@ -34,13 +34,13 @@ const projects = [
     demo: "https://colab.research.google.com/drive/15vpthRFotlqRoNK-etastATwSv3INj8v?usp=sharing",
   },
   {
-    title: "BookSky",
+    title: "Warehouse.ai",
     description:
-      "A web development project for uploading and viewing book details. Features a clean interface for managing book information and browsing book collections.",
-    image: "/images/projects/booksky.png",
-    technologies: ["TailwindCSS", "JSX", "HTML", "Web Development"],
-    github: "https://github.com/vahith33/Booksky",
-    demo: "https://github.com/vahith33/Booksky",
+      "A sophisticated AI-driven warehouse management system enabling owners to optimize stock movements. Features a RAG-based AI assistant that reduces operational latency by 30% and includes secure user authentication for data integrity.",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1000&auto=format&fit=crop",
+    technologies: ["Next.js", "FastAPI", "RAG AI", "Redux", "MongoDB", "Vercel", "Render"],
+    github: "https://github.com/vahith33/warehouse.ai-frontend",
+    demo: "https://warehouse-ai-frontend.vercel.app/",
   },
   {
     title: "Inventory Management System",

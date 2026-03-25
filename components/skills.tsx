@@ -4,39 +4,44 @@ import { motion } from "framer-motion"
 import { Download, FileText } from "lucide-react"
 import AnimatedBackground from "@/components/animated-background"
 
-const programmingLanguages = [
-  { name: "Python", level: 90 },
-  { name: "JavaScript", level: 85 },
-  { name: "Java (Basics)", level: 60 },
-  { name: "SQL", level: 70 },
-]
+const getIconUrl = (name: string) => {
+  const icons: { [key: string]: string } = {
+    Python: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    JavaScript: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    HTML: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    React: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    TailwindCSS: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg",
+    "Next.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    Redux: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
+    FastAPI: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+    Postman: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg",
+    MongoDB: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    Supabase: "https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg",
+    "VS Code": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+    "Google Colab": "https://cdn.simpleicons.org/googlecolab/F9AB00",
+    Github: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+    Canva: "https://www.vectorlogo.zone/logos/canva/canva-icon.svg",
+    Cursor: "https://www.cursor.com/assets/images/logo.svg",
+    Claude: "https://cdn.simpleicons.org/anthropic/D97757",
+    Stitch: "https://cdn.simpleicons.org/mongodb/47A248",
+    Antigravity: "https://cdn.simpleicons.org/googlecloud/4285F4",
+    Vercel: "https://cdn.simpleicons.org/vercel/000000",
+    Render: "https://cdn.simpleicons.org/render/46E3B7",
+  }
+  return icons[name] || "https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg"
+}
 
-const aiSkills = [
-  { name: "Gen AI", level: 60 },
-  { name: "Prompt Engineering", level: 80 },
-  { name: "Automation", level: 75 },
-]
+const aiSkills = ["RAG", "Prompt Engineering", "Gen AI", "Automation", "Hugging Face"]
 
 const fullstackSkills = [
-  { name: "HTML", level: 95 },
-  { name: "CSS", level: 90 },
-  { name: "React", level: 80 },
-  { name: "Figma", level: 70 },
-  { name: "TailwindCSS", level: 85 },
-  { name: "Next.js", level: 75 },
-  { name: "RESTful API", level: 60 },
-  { name: "Design", level: 80 },
+  "HTML", "TailwindCSS", "React", "JavaScript", "Next.js", "Redux", "Python", "FastAPI", "Postman", "MongoDB", "Supabase", "Vercel", "Render"
 ]
 
 const toolsAndSoftware = [
-  { name: "VS Code", initial: "VS" },
-  { name: "Google Collab", initial: "GC" },
-  { name: "Github", initial: "Git" },
-  { name: "Canva", initial: "CV" },
+  "VS Code", "Google Colab", "Antigravity", "Github", "Canva", "Cursor", "Claude", "Stitch"
 ]
 
 const softSkills = ["Team Work", "Adaptive", "User Empathy", "Problem Solving"]
-
 const languages = ["Tamil", "English"]
 
 export default function Skills() {
@@ -56,7 +61,6 @@ export default function Skills() {
   }
 
   const handleResumeDownload = () => {
-    // Create a link element and trigger download
     const link = document.createElement("a")
     link.href = "/resume/ahamed-vahith-resume.pdf"
     link.download = "Ahamed_Vahith_Resume.pdf"
@@ -65,30 +69,27 @@ export default function Skills() {
     document.body.removeChild(link)
   }
 
-  const SkillBar = ({
-    skill,
-    index,
-    color = "bg-dark-teal dark:bg-blue-400",
-  }: { skill: any; index: number; color?: string }) => (
+  const SkillCard = ({
+    name,
+    hasIcon = true,
+  }: { name: string; hasIcon?: boolean }) => (
     <motion.div
-      key={skill.name}
+      key={name}
       variants={itemVariants}
-      whileHover={{ scale: 1.02, x: 5 }}
-      className="flex items-center gap-4 cursor-pointer"
+      whileHover={{ scale: 1.05, y: -5 }}
+      className="bg-white dark:bg-gray-700 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-600 flex items-center gap-4 hover:shadow-md transition-all duration-300 cursor-pointer h-full"
     >
-      <span className="text-gray-700 dark:text-gray-300 w-40 text-left text-sm transition-colors duration-300">
-        {skill.name}
-      </span>
-      <div className="flex-1 bg-warm-beige dark:bg-gray-700 rounded-full h-2 transition-colors duration-300">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${skill.level}%` }}
-          transition={{ duration: 1, delay: index * 0.1 }}
-          className={`${color} h-2 rounded-full transition-colors duration-300`}
-        />
-      </div>
-      <span className="text-gray-700 dark:text-gray-300 font-medium w-10 text-right text-sm transition-colors duration-300">
-        {skill.level}%
+      {hasIcon && (
+        <div className="w-8 h-8 flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-lg p-1.5 flex-shrink-0">
+          <img 
+            src={getIconUrl(name)} 
+            alt={name} 
+            className="w-full h-full object-contain"
+          />
+        </div>
+      )}
+      <span className="text-gray-800 dark:text-gray-200 font-semibold text-sm transition-colors duration-300">
+        {name}
       </span>
     </motion.div>
   )
@@ -111,14 +112,14 @@ export default function Skills() {
             Expertise
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-dark-teal to-blue-gray dark:from-blue-400 dark:to-blue-300 bg-clip-text text-transparent">
-            Skills & Tools
+            Skills & Proficiency
           </h2>
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto transition-colors duration-300">
-            The technologies, tools, and skills I use to bring digital products to life.
+            A specialized overview of my AI engineering and full-stack development expertise.
           </p>
         </motion.div>
 
-        {/* Programming Languages & Database */}
+        {/* AI & Machine Learning */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -127,16 +128,16 @@ export default function Skills() {
           className="mb-16"
         >
           <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-8 text-center transition-colors duration-300">
-            Programming Languages & Database
+            AI & Machine Learning
           </h3>
-          <div className="max-w-4xl mx-auto space-y-6">
-            {programmingLanguages.map((skill, index) => (
-              <SkillBar key={skill.name} skill={skill} index={index} />
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+            {aiSkills.map((name) => (
+              <SkillCard key={name} name={name} hasIcon={false} />
             ))}
           </div>
         </motion.div>
 
-        {/* AI Skills */}
+        {/* Full Stack Development */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -145,34 +146,11 @@ export default function Skills() {
           className="mb-16"
         >
           <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-8 text-center transition-colors duration-300">
-            AI Skills
+            Full Stack Development
           </h3>
-          <div className="max-w-4xl mx-auto space-y-6">
-            {aiSkills.map((skill, index) => (
-              <SkillBar key={skill.name} skill={skill} index={index} color="bg-blue-gray dark:bg-blue-500" />
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Full Stack Skills */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={containerVariants}
-          className="mb-16"
-        >
-          <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-8 text-center transition-colors duration-300">
-            Full Stack Skills
-          </h3>
-          <div className="max-w-4xl mx-auto space-y-6">
-            {fullstackSkills.map((skill, index) => (
-              <SkillBar
-                key={skill.name}
-                skill={skill}
-                index={index}
-                color="bg-gradient-to-r from-dark-teal to-blue-gray dark:from-blue-400 dark:to-blue-300"
-              />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+            {fullstackSkills.map((name) => (
+              <SkillCard key={name} name={name} />
             ))}
           </div>
         </motion.div>
@@ -188,21 +166,9 @@ export default function Skills() {
           <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-8 text-center transition-colors duration-300">
             Tools & Software
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {toolsAndSoftware.map((tool) => (
-              <motion.div
-                key={tool.name}
-                variants={itemVariants}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="flex flex-col items-center justify-center p-4 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg shadow-sm text-center cursor-pointer hover:shadow-lg transition-all duration-300"
-              >
-                <div className="w-12 h-12 bg-dark-teal dark:bg-blue-500 rounded-full flex items-center justify-center mb-2 transition-colors duration-300">
-                  <span className="text-cream font-bold text-lg">{tool.initial}</span>
-                </div>
-                <span className="text-gray-700 dark:text-gray-300 text-sm transition-colors duration-300">
-                  {tool.name}
-                </span>
-              </motion.div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            {toolsAndSoftware.map((name) => (
+              <SkillCard key={name} name={name} />
             ))}
           </div>
         </motion.div>

@@ -59,23 +59,23 @@ export default function About() {
               transition={{ duration: 1, delay: 0.5, type: "spring", bounce: 0.4 }}
               className="w-40 h-40 rounded-full overflow-hidden border-4 border-white/20 mb-6"
             >
-              <Image
-                src="/images/profile-cropped.png"
+                <Image
+                src="/images/portfolio_image.jpeg"
                 alt="Ahamed Vahith Profile"
-                width={160}
-                height={160}
-                className="w-full h-full object-cover"
-              />
+                width={165}
+                height={165}
+                className="w-full h-full object-cover scale-125 transition-transform duration-500 group-hover:scale-120"
+                />
             </motion.div>
 
             <div className="text-center">
               <h3 className="text-2xl font-bold text-white mb-2">Ahamed Vahith K</h3>
               <p className="text-blue-100 dark:text-blue-200 leading-relaxed mb-4 transition-colors duration-300">
-                MACHINE LEARNING ENGINEER
+                AI PRODUCT DEVELOPER & FULL STACK DEVELOPER
               </p>
               <div className="bg-white/10 dark:bg-white/20 rounded-lg p-4 backdrop-blur-sm transition-colors duration-300">
                 <p className="text-blue-100 dark:text-blue-200 text-sm italic transition-colors duration-300">
-                  "An aspiring ML engineer who is looking for the opportunity to showcase skills"
+                  "Building intelligent digital products that solve real-world problems through AI and modern web technologies"
                 </p>
               </div>
             </div>
@@ -93,10 +93,10 @@ export default function About() {
               Career Objective
             </h3>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
-              Aspiring Machine Learning Engineer with a strong foundation in AI and Web development. Passionate about
-              transforming real-world problems into scalable solutions using intelligent systems. Seeking to contribute
-              to forward-thinking teams where I can apply my skills in predictive modeling, web technologies, and
-              cross-functional collaboration to drive impactful outcomes.
+              Innovative AI Product Developer and Full Stack Developer with a strong foundation in AI/ML and modern Web development. Passionate about
+              transforming real-world problems into scalable, user-centric products using intelligent systems. Seeking to contribute
+              to forward-thinking teams where I can apply my skills in generative AI, predictive modeling, and
+              robust full-stack engineering to drive impactful outcomes.
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-4">

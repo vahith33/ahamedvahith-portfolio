@@ -5,6 +5,7 @@ import { Pacifico } from "next/font/google"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import HeroCircleBackground from "@/components/hero-circle-background"
+import AIChat from "@/components/ai-chat"
 
 const pacifico = Pacifico({
   subsets: ["latin"],
@@ -13,9 +14,9 @@ const pacifico = Pacifico({
 })
 
 export default function HeroGeometric({
-  badge = "Fullstack & ML Engineer",
+  badge = "AI Product Developer & Full Stack Developer",
   title1 = "Ahamed Vahith",
-  description = "I am a passionate Fullstack & ML Engineer, dedicated to building innovative and efficient digital solutions that leverage both robust backend systems and intelligent machine learning models.",
+  description = "I am a passionate AI Product Developer and Full Stack Developer, dedicated to building innovative and user-centric digital products that bridge the gap between advanced AI capabilities and seamless web experiences.",
 }: {
   badge?: string
   title1?: string
@@ -177,19 +178,19 @@ export default function HeroGeometric({
         </svg>
       </div>
 
-     <div className="relative z-10 container mx-auto px-8 md:px-20 py-8 md:py-0">
-        <div className="grid lg:grid-cols-2 gap-8 items-center min-h-screen">
-          {/* Left Content */}
-          <div className="space-y-6">
-            <h1 className="font-bold leading-tight tracking-tight">
+     <div className="relative z-10 container mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-32">
+        <div className="flex flex-col items-center text-center max-w-5xl mx-auto space-y-12">
+          {/* Main Content Stack */}
+          <div className="space-y-8 flex flex-col items-center">
+            <h1 className="font-bold leading-tight tracking-tight text-center">
               <motion.span
                 custom={0}
                 variants={fadeUpVariants}
                 initial="hidden"
                 animate="visible"
-                className="text-gray-800 dark:text-gray-200 block font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl transition-colors duration-300"
+                className="text-gray-800 dark:text-gray-200 block font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl transition-colors duration-300"
               >
-                {"Hi! I'm "}
+                {"Hi I'm "}
               </motion.span>
               <motion.span
                 custom={1}
@@ -197,7 +198,7 @@ export default function HeroGeometric({
                 initial="hidden"
                 animate="visible"
                 className={cn(
-                  "bg-clip-text text-transparent block font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl",
+                  "bg-clip-text text-transparent block font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl",
                 )}
                 style={{
                   backgroundImage: "linear-gradient(45deg, #1b3c53, #456882, #2a4d66, #5a7a95)",
@@ -225,7 +226,7 @@ export default function HeroGeometric({
             </motion.div>
 
             <motion.div custom={3} variants={fadeUpVariants} initial="hidden" animate="visible">
-              <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl transition-colors duration-300">
+              <p className="text-base md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-4xl transition-colors duration-300">
                 {description}
               </p>
             </motion.div>
@@ -235,13 +236,13 @@ export default function HeroGeometric({
               variants={fadeUpVariants}
               initial="hidden"
               animate="visible"
-              className="flex flex-col sm:flex-row gap-3"
+              className="flex flex-col sm:flex-row gap-4"
             >
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection("projects")}
-                className="px-6 py-2.5 bg-dark-teal dark:bg-blue-500 text-cream rounded-lg font-medium hover:bg-dark-teal-light dark:hover:bg-blue-600 transition-colors shadow-lg text-sm"
+                className="px-8 py-3 bg-dark-teal dark:bg-blue-500 text-cream rounded-lg font-medium hover:bg-dark-teal-light dark:hover:bg-blue-600 transition-colors shadow-lg text-sm"
               >
                 View My Work
               </motion.button>
@@ -249,72 +250,21 @@ export default function HeroGeometric({
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection("contact")}
-                className="px-6 py-2.5 bg-transparent border-2 border-dark-teal dark:border-blue-400 text-dark-teal dark:text-blue-400 rounded-lg font-medium hover:bg-dark-teal/5 dark:hover:bg-blue-400/5 transition-colors shadow-lg text-sm"
+                className="px-8 py-3 bg-transparent border-2 border-dark-teal dark:border-blue-400 text-dark-teal dark:text-blue-400 rounded-lg font-medium hover:bg-dark-teal/5 dark:hover:bg-blue-400/5 transition-colors shadow-lg text-sm"
               >
                 Get in Touch
               </motion.button>
             </motion.div>
           </div>
-          {/* Right Content - Profile Image */}
+
+          {/* AI Chat interface - Centered Below */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, x: 50 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-            className="flex justify-center lg:justify-end"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
+            className="w-full flex justify-center"
           >
-            <div className="relative">
-              <motion.div
-                className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-blue-gray/30 dark:border-blue-400/30 shadow-2xl cursor-pointer transition-colors duration-300"
-                animate={{
-                  y: [0, -15, 0],
-                  x: [0, 5, -5, 0],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection("about")}
-              >
-                <Image
-                  src="/images/profile-cropped.png"
-                  alt="Ahamed Vahith Profile"
-                  width={400}
-                  height={400}
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-
-              {/* Floating accent elements around profile */}
-              <motion.div
-                animate={{
-                  y: [0, -8, 0],
-                  rotate: [0, 5, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                }}
-                className="absolute -top-3 -right-3 w-6 h-6 bg-gradient-to-r from-dark-teal to-blue-gray dark:from-blue-400 dark:to-blue-300 rounded-full opacity-80 transition-colors duration-300"
-              />
-
-              <motion.div
-                animate={{
-                  y: [0, 8, 0],
-                  rotate: [0, -5, 0],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                  delay: 1,
-                }}
-                className="absolute -bottom-4 -left-4 w-5 h-5 bg-gradient-to-r from-blue-gray to-dark-teal-light dark:from-blue-300 dark:to-blue-500 rounded-full opacity-60 transition-colors duration-300"
-              />
-            </div>
+            <AIChat />
           </motion.div>
         </div>
       </div>
